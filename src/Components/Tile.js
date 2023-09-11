@@ -1,18 +1,14 @@
 import { useState } from "react";
 
-function Tile({ turnIsX, setPlayerTurn }) {
-  let [tileValue, setTileValue] = useState("");
+function Tile({ position, changeBoardState, val, winner }) {
   return (
     <div
       className="square"
       onClick={() => {
-        turnIsX
-          ? tileValue === "" && setTileValue("O")
-          : tileValue === "" && setTileValue("X");
-        tileValue === "" && setPlayerTurn(!turnIsX);
+        winner == null && changeBoardState(position);
       }}
     >
-      <h1 className="text-center">{tileValue}</h1>
+      <h1 className="text-center">{val.value}</h1>
     </div>
   );
 }
