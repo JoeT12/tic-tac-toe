@@ -45,19 +45,64 @@ function Board() {
       <h1 className="text-center text-4xl">TIC-TAC-TOE</h1>
       <br />
       <div className="board-row">
-        <Tile position={0} changeBoardState={changeBoardState} val={board[0]} />
-        <Tile position={1} changeBoardState={changeBoardState} val={board[1]} />
-        <Tile position={2} changeBoardState={changeBoardState} val={board[2]} />
+        <Tile
+          position={0}
+          changeBoardState={changeBoardState}
+          val={board[0]}
+          winner={winner}
+        />
+        <Tile
+          position={1}
+          changeBoardState={changeBoardState}
+          val={board[1]}
+          winner={winner}
+        />
+        <Tile
+          position={2}
+          changeBoardState={changeBoardState}
+          val={board[2]}
+          winner={winner}
+        />
       </div>
       <div className="board-row">
-        <Tile position={3} changeBoardState={changeBoardState} val={board[3]} />
-        <Tile position={4} changeBoardState={changeBoardState} val={board[4]} />
-        <Tile position={5} changeBoardState={changeBoardState} val={board[5]} />
+        <Tile
+          position={3}
+          changeBoardState={changeBoardState}
+          val={board[3]}
+          winner={winner}
+        />
+        <Tile
+          position={4}
+          changeBoardState={changeBoardState}
+          val={board[4]}
+          winner={winner}
+        />
+        <Tile
+          position={5}
+          changeBoardState={changeBoardState}
+          val={board[5]}
+          winner={winner}
+        />
       </div>
       <div className="board-row">
-        <Tile position={6} changeBoardState={changeBoardState} val={board[6]} />
-        <Tile position={7} changeBoardState={changeBoardState} val={board[7]} />
-        <Tile position={8} changeBoardState={changeBoardState} val={board[8]} />
+        <Tile
+          position={6}
+          changeBoardState={changeBoardState}
+          val={board[6]}
+          winner={winner}
+        />
+        <Tile
+          position={7}
+          changeBoardState={changeBoardState}
+          val={board[7]}
+          winner={winner}
+        />
+        <Tile
+          position={8}
+          changeBoardState={changeBoardState}
+          val={board[8]}
+          winner={winner}
+        />
       </div>
       <br />
       {winner != null ? (

@@ -1,9 +1,9 @@
-function Tile({ position, changeBoardState, val }) {
+function Tile({ position, changeBoardState, val, winner }) {
   return (
     <div
       className="square"
       onClick={() => {
-        val.value == null && changeBoardState(position);
+        winner == null && changeBoardState(position);
       }}
     >
       <h1 className="text-center">{val.value}</h1>
