@@ -1,17 +1,3 @@
-function resetBoard(board, changeBoard) {
-  const newBoard = board.map((tile) => {
-    if (tile.value != null) {
-      return {
-        ...tile,
-        value: null,
-      };
-    } else {
-      return tile;
-    }
-  });
-  changeBoard(newBoard);
-}
-
 function Reset({ board, changeBoard, changeWinner, changeTurn, resetDraw }) {
   return (
     <button
@@ -26,6 +12,20 @@ function Reset({ board, changeBoard, changeWinner, changeTurn, resetDraw }) {
       Reset Game!
     </button>
   );
+}
+
+function resetBoard(board, changeBoard) {
+  const newBoard = board.map((tile) => {
+    if (tile.value != null) {
+      return {
+        ...tile,
+        value: null,
+      };
+    } else {
+      return tile;
+    }
+  });
+  changeBoard(newBoard);
 }
 
 export default Reset;

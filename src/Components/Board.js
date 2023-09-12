@@ -2,52 +2,6 @@ import { useEffect, useState } from "react";
 import Tile from "./Tile";
 import Reset from "./Reset";
 
-function checkWin(board, setWinner) {
-  let winningLines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  let xTotal = 0,
-    oTotal = 0;
-  for (let x = 0; x < winningLines.length; x++) {
-    xTotal = 0;
-    oTotal = 0;
-    for (let y = 0; y < 3; y++) {
-      if (board[winningLines[x][y]].value == "X") {
-        xTotal++;
-      } else if (board[winningLines[x][y]].value == "O") {
-        oTotal++;
-      }
-      if (xTotal == 3) {
-        setWinner("X");
-        return;
-      }
-      if (oTotal == 3) {
-        setWinner("O");
-        return;
-      }
-    }
-  }
-}
-
-function checkDraw(board, setDraw) {
-  let emptySquares = 9;
-  for (let x = 0; x < board.length; x++) {
-    if (board[x].value != null) {
-      emptySquares--;
-    }
-  }
-  if (emptySquares == 0) {
-    setDraw(true);
-  }
-}
-
 function Board() {
   let startingBoard = [
     { id: 0, value: null },
@@ -82,7 +36,7 @@ function Board() {
   };
 
   const changePlayer = () => {
-    playerTurn == "X" ? setPlayerTurn("O") : setPlayerTurn("X");
+    playerTurn === "X" ? setPlayerTurn("O") : setPlayerTurn("X");
   };
 
   return (
@@ -91,69 +45,24 @@ function Board() {
       <h1 className="text-center text-4xl">TIC-TAC-TOE</h1>
       <br />
       <div className="board-row">
-        <Tile
-          position={0}
-          changeBoardState={changeBoardState}
-          val={board[0]}
-          winner={winner}
-        />
-        <Tile
-          position={1}
-          changeBoardState={changeBoardState}
-          val={board[1]}
-          winner={winner}
-        />
-        <Tile
-          position={2}
-          changeBoardState={changeBoardState}
-          val={board[2]}
-          winner={winner}
-        />
+        <Tile position={0} changeBoardState={changeBoardState} val={board[0]} />
+        <Tile position={1} changeBoardState={changeBoardState} val={board[1]} />
+        <Tile position={2} changeBoardState={changeBoardState} val={board[2]} />
       </div>
       <div className="board-row">
-        <Tile
-          position={3}
-          changeBoardState={changeBoardState}
-          val={board[3]}
-          winner={winner}
-        />
-        <Tile
-          position={4}
-          changeBoardState={changeBoardState}
-          val={board[4]}
-          winner={winner}
-        />
-        <Tile
-          position={5}
-          changeBoardState={changeBoardState}
-          val={board[5]}
-          winner={winner}
-        />
+        <Tile position={3} changeBoardState={changeBoardState} val={board[3]} />
+        <Tile position={4} changeBoardState={changeBoardState} val={board[4]} />
+        <Tile position={5} changeBoardState={changeBoardState} val={board[5]} />
       </div>
       <div className="board-row">
-        <Tile
-          position={6}
-          changeBoardState={changeBoardState}
-          val={board[6]}
-          winner={winner}
-        />
-        <Tile
-          position={7}
-          changeBoardState={changeBoardState}
-          val={board[7]}
-          winner={winner}
-        />
-        <Tile
-          position={8}
-          changeBoardState={changeBoardState}
-          val={board[8]}
-          winner={winner}
-        />
+        <Tile position={6} changeBoardState={changeBoardState} val={board[6]} />
+        <Tile position={7} changeBoardState={changeBoardState} val={board[7]} />
+        <Tile position={8} changeBoardState={changeBoardState} val={board[8]} />
       </div>
       <br />
       {winner != null ? (
         <h1 className="text-center text-2xl">Winner is {winner}</h1>
-      ) : draw == false ? (
+      ) : draw === false ? (
         playerTurn === "O" ? (
           <h1 className="text-center text-2xl">O Turn</h1>
         ) : (
@@ -182,6 +91,52 @@ function Board() {
       </div>
     </div>
   );
+}
+
+function checkWin(board, setWinner) {
+  let winningLines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  let xTotal = 0,
+    oTotal = 0;
+  for (let x = 0; x < winningLines.length; x++) {
+    xTotal = 0;
+    oTotal = 0;
+    for (let y = 0; y < 3; y++) {
+      if (board[winningLines[x][y]].value === "X") {
+        xTotal++;
+      } else if (board[winningLines[x][y]].value === "O") {
+        oTotal++;
+      }
+      if (xTotal === 3) {
+        setWinner("X");
+        return;
+      }
+      if (oTotal === 3) {
+        setWinner("O");
+        return;
+      }
+    }
+  }
+}
+
+function checkDraw(board, setDraw) {
+  let emptySquares = 9;
+  for (let x = 0; x < board.length; x++) {
+    if (board[x].value != null) {
+      emptySquares--;
+    }
+  }
+  if (emptySquares === 0) {
+    setDraw(true);
+  }
 }
 
 export default Board;

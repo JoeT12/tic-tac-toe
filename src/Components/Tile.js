@@ -1,11 +1,9 @@
-import { useState } from "react";
-
-function Tile({ position, changeBoardState, val, winner }) {
+function Tile({ position, changeBoardState, val }) {
   return (
     <div
       className="square"
       onClick={() => {
-        winner == null && changeBoardState(position);
+        val.value == null && changeBoardState(position);
       }}
     >
       <h1 className="text-center">{val.value}</h1>
